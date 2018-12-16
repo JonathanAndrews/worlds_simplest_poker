@@ -13,15 +13,16 @@ class SimplePoker < Sinatra::Base
   end
 
   post '/' do
-    players = params['no_of_players']
-    hand_size = params['hand_size']
-    session[dealer] = Dealer.new(players, hand_size)
+    players = params['no_of_players'].to_i
+    hand_size = params['hand_size'].to_i
+    session[:dealer] = Dealer.new(players, hand_size)
     redirect '/result'
   end
 
-  get 'result' do
-    dealer = session[dealer]
-    hands = dealer.deal
-    dealer.calculate_winner(hands)
+  get '/result' do
+    dealer = session[:dealer]
+    @hands = dealer.deal
+    @winner = dealer.calculate_winner(@hands)
+    erb :winner_screen
   end
 end
