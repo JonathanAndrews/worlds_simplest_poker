@@ -1,0 +1,13 @@
+AllCops:
+  Exclude:
+    - 'spec/spec_helper.rb'
+    
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'test/**/*'
