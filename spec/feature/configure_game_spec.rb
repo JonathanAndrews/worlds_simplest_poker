@@ -31,4 +31,12 @@ feature 'Configure Game screen' do
     expect(page).to have_content('How many cards in each hand?')
     expect(page).to have_content('How many players?')
   end
+
+  scenario 'redirected to config page shows flash message' do
+    visit '/'
+    fill_in :no_of_players, with: 52
+    fill_in :hand_size, with: 2
+    click_button("Play")
+    expect(page).to have_content("Not enough dards in the deck...")
+  end
 end

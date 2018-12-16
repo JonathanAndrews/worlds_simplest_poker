@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative './lib/dealer'
 
 # These are the routes for simple poker application
 class SimplePoker < Sinatra::Base
   enable :sessions
   set :session_secret, 'Ssssshhh! secret'
+  register Sinatra::Flash
 
   get '/' do
     erb :configure_game
@@ -17,6 +19,7 @@ class SimplePoker < Sinatra::Base
     hand_size = params['hand_size'].to_i
     dealer = Dealer.new(players, hand_size)
     unless dealer.enough_cards?
+      flash[:notice] = "Not enough dards in the deck..."
       redirect '/'
     else
       session[:dealer] = dealer
