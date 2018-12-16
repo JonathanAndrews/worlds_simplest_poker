@@ -11,4 +11,9 @@ feature 'Configure Game screen' do
     expect(page).to have_content("How many players?")
   end
 
+  scenario "should have a hand size input" do
+    visit "/"
+    expect(page).to have_content("How many cards in each hand?")
+  end
+
 end
