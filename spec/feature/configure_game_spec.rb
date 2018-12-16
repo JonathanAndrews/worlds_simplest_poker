@@ -21,4 +21,14 @@ feature 'Configure Game screen' do
     fill_in :no_of_players, with: 2
     fill_in :hand_size, with: 2
   end
+
+  scenario 'redirected to config page if not enough cards' do
+    visit '/'
+    fill_in :no_of_players, with: 52
+    fill_in :hand_size, with: 2
+    click_button("Play")
+    expect(page).to have_content("Welcome the World's Simplest Poker Game")
+    expect(page).to have_content('How many cards in each hand?')
+    expect(page).to have_content('How many players?')
+  end
 end

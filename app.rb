@@ -15,8 +15,13 @@ class SimplePoker < Sinatra::Base
   post '/' do
     players = params['no_of_players'].to_i
     hand_size = params['hand_size'].to_i
-    session[:dealer] = Dealer.new(players, hand_size)
-    redirect '/result'
+    dealer = Dealer.new(players, hand_size)
+    unless dealer.enough_cards?
+      redirect '/'
+    else
+      session[:dealer] = dealer
+      redirect '/result'
+    end 
   end
 
   get '/result' do

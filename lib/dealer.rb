@@ -2,12 +2,14 @@
 
 # The Dealer runs the game, allocating the cards and calculating the winner.
 class Dealer
-  attr_reader :players, :hand_size, :cards
+
+  DECK_SIZE = 52
+  attr_reader :players, :hand_size, :deck
 
   def initialize(players, hand_size)
     @players = players
     @hand_size = hand_size
-    @cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+    @deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
               1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
               1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
               1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
@@ -21,6 +23,10 @@ class Dealer
   def calculate_winner(hands)
     winner_array = hands.max_by { |_k, v| v.sum }
     winner_array[0]
+  end
+
+  def enough_cards?
+    players * hand_size < DECK_SIZE
   end
 
   private
@@ -46,8 +52,8 @@ class Dealer
   def select_cards(quantity)
     hand = []
     quantity.times do
-      selected_index = Kernel.rand(cards.length)
-      hand << cards.delete_at(selected_index)
+      selected_index = Kernel.rand(deck.length)
+      hand << deck.delete_at(selected_index)
     end
     hand
   end

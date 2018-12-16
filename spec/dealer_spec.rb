@@ -43,5 +43,17 @@ describe Dealer do
         expect(dealer.calculate_winner(hands)).to eq(:player_2)
       end
     end
+
+    describe '#enough_cards?' do
+      it 'returns false if there are not enough cards' do
+        dealer = described_class.new(1, 53)
+        expect(dealer.enough_cards?).to eq(false)
+      end
+
+      it 'returns true if there are  enough cards' do
+        dealer = described_class.new(3, 5)
+        expect(dealer.enough_cards?).to eq(true)
+      end
+    end
   end
 end
