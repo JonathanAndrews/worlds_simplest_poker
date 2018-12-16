@@ -1,10 +1,10 @@
 <h1>Welcome the World's Simplest Poker Game</h1>
 
-<form action="/store_play_mode" method="post">
+<form action="/" method="post">
   How many players?<br>
-  <input type="text" name="no_players"><br>
+  <input type="number" name="no_of_players" required><br>
   How many cards in each hand?<br>
-  <input type="text" name="hand_size">
-  <button type="submit">Submit</button>
+  <input type="number" name="hand_size" required><br>
+  <button type="submit">Play</button>
 </form>
 

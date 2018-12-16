@@ -16,4 +16,10 @@ feature 'Configure Game screen' do
     expect(page).to have_content("How many cards in each hand?")
   end
 
+  scenario "can input 2 players with 2 cards" do
+    visit "/"
+    fill_in :no_of_players, with: 2
+    fill_in :hand_size, with: 2
+  end
+
 end
