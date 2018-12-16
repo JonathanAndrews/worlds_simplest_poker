@@ -18,14 +18,22 @@ describe Dealer do
 
     describe "#deal" do
       it "allocates cards to the right number of players" do
-        result = dealer.deal
-        expect(result.length).to eq(number_of_players)
+        hands = dealer.deal
+        expect(hands.length).to eq(number_of_players)
       end
+
       it "allocates the right number of cards to players" do
-        result = dealer.deal
-        expect(result[:player_1].length).to eq(hand_size)
-        expect(result[:player_2].length).to eq(hand_size)
+        hands = dealer.deal
+        expect(hands[:player_1].length).to eq(hand_size)
+        expect(hands[:player_2].length).to eq(hand_size)
+      end
+
+      it "calls Kernel#rand" do
+        allow(Kernel).to receive(:rand).and_return(0)
+        expect(dealer.deal).to eq({ :player_1 => [1,2],
+                                    :player_2 => [3,4] })
       end
     end
+
   end
 end

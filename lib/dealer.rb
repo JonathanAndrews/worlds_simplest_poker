@@ -16,6 +16,8 @@ class Dealer
     allocate_cards(players_hash)
   end
 
+
+
   private
 
   def setup_players
@@ -33,14 +35,15 @@ class Dealer
       hand = select_cards(hand_size)
       player_hash[player.to_sym].push(*hand)
     end
+    p player_hash
     player_hash
   end
 
   def select_cards(quantity)
     hand = []
     for i in 1..quantity do
-      p cards
-      hand << cards.delete_at(rand(cards.length))
+      selected_index = Kernel.rand(cards.length)
+      hand << cards.delete_at(selected_index)
     end
     hand
   end

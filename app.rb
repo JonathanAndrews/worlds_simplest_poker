@@ -22,7 +22,8 @@ class SimplePoker < Sinatra::Base
 
   get 'result' do
     dealer = session[dealer]
-    dealer.deal
+    hands = dealer.deal
+    dealer.calculate_winner(hands)
   end
 
 end
