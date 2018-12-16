@@ -9,12 +9,21 @@ feature 'Winner screen' do
     expect(page).to have_content("And the winner is")
   end
 
-  scenario "has 'Play Another Hand' text" do
+  scenario "has 'Play Another Hand' button" do
     visit '/'
     fill_in :no_of_players, with: 2
     fill_in :hand_size, with: 2
     click_button("Play")
     click_button("Play another Hand?")
     expect(page).to have_content("And the winner is")
+  end
+
+  scenario "has 'Brand New Game?' button" do
+    visit '/'
+    fill_in :no_of_players, with: 2
+    fill_in :hand_size, with: 2
+    click_button("Play")
+    click_button("Brand New Game?")
+    expect(page).to have_content("Welcome the World's Simplest Poker Game")
   end
 end
