@@ -23,8 +23,8 @@ describe Dealer do
       end
       it "allocates the right number of cards to players" do
         result = dealer.deal
-        expect(result[:player_1][:cards].length).to eq(hand_size)
-        expect(result[:player_2][:cards].length).to eq(hand_size)
+        expect(result[:player_1].length).to eq(hand_size)
+        expect(result[:player_2].length).to eq(hand_size)
       end
     end
   end
