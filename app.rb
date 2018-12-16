@@ -1,10 +1,17 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require_relative './lib/dealer'
 
 # these are the routes for simple poker application
 class SimplePoker < Sinatra::Base
   get '/' do
     erb :configure_game
+  end
+
+  post '/' do
+    players = params["no_of_players"]
+    hand_size = params["hand_size"]
+    Dealer.new(players, hand_size)
   end
 end
