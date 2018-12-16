@@ -5,4 +5,10 @@ feature 'Configure Game screen' do
     visit '/'
     expect(page).to have_content("Welcome the World's Simplest Poker Game")
   end
+
+  scenario "should have a number of players input" do
+    visit "/"
+    expect(page).to have_content("How many players?")
+  end
+
 end
