@@ -3,19 +3,18 @@
 require 'sinatra/base'
 require_relative './lib/dealer'
 
-# these are the routes for simple poker application
+# These are the routes for simple poker application
 class SimplePoker < Sinatra::Base
-
   enable :sessions
-  set :session_secret, "Ssssshhh! secret"
+  set :session_secret, 'Ssssshhh! secret'
 
   get '/' do
     erb :configure_game
   end
 
   post '/' do
-    players = params["no_of_players"]
-    hand_size = params["hand_size"]
+    players = params['no_of_players']
+    hand_size = params['hand_size']
     session[dealer] = Dealer.new(players, hand_size)
     redirect '/result'
   end
@@ -25,5 +24,4 @@ class SimplePoker < Sinatra::Base
     hands = dealer.deal
     dealer.calculate_winner(hands)
   end
-
 end
