@@ -6,4 +6,12 @@ class Dealer
     @players = players
     @hand_size = hand_size
   end
+
+  def deal 
+    result = []
+    for i in 1..players do
+      result.push({})
+    end
+    result
+  end
 end
