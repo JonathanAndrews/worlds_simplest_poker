@@ -4,15 +4,16 @@
 class Dealer
 
   DECK_SIZE = 52
+  DECK = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
   attr_reader :players, :hand_size, :deck
 
   def initialize(players, hand_size)
     @players = players
     @hand_size = hand_size
-    @deck = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    reset_deck
   end
 
   def deal
@@ -27,6 +28,10 @@ class Dealer
 
   def enough_cards?
     players * hand_size < DECK_SIZE
+  end
+
+  def reset_deck
+    @deck = DECK.dup
   end
 
   private

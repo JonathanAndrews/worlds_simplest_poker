@@ -5,6 +5,7 @@ require 'dealer'
 describe Dealer do
   number_of_players = 2
   hand_size = 2
+  DECK_SIZE = 52
 
   describe '#initialize' do
     it 'takes a number of players and a hand size' do
@@ -46,13 +47,23 @@ describe Dealer do
 
     describe '#enough_cards?' do
       it 'returns false if there are not enough cards' do
-        dealer = described_class.new(1, 53)
+        dealer = described_class.new(1, DECK_SIZE + 1)
         expect(dealer.enough_cards?).to eq(false)
       end
 
       it 'returns true if there are  enough cards' do
         dealer = described_class.new(3, 5)
         expect(dealer.enough_cards?).to eq(true)
+      end
+    end
+
+    describe '#reset_deck' do
+      it 'returns cards to the deck' do
+        expect(dealer.deck.length).to eq(DECK_SIZE)
+        dealer.deal
+        expect(dealer.deck.length).to eq(DECK_SIZE - 4)
+        dealer.reset_deck
+        expect(dealer.deck.length).to eq(DECK_SIZE)
       end
     end
   end

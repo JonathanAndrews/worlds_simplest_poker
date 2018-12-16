@@ -30,4 +30,10 @@ class SimplePoker < Sinatra::Base
     @winner = dealer.calculate_winner(@hands)
     erb :winner_screen
   end
+
+  post '/result' do
+    dealer = session[:dealer]
+    dealer.reset_deck
+    redirect '/result'
+  end
 end
