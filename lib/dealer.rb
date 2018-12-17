@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'deck'
+
 # The Dealer runs the game, allocating the cards and calculating the winner.
 class Dealer
   attr_reader :players, :hand_size, :deck
@@ -17,8 +19,8 @@ class Dealer
   end
 
   def calculate_winner(hands)
-    winner_array = hands.max_by { |_k, v| v.sum }
-    winner_array[0]
+    scores = total_scores(hands)
+    highest_score(scores)
   end
 
   def enough_cards?
@@ -56,5 +58,24 @@ class Dealer
       hand << deck.remove_card(selected_index)
     end
     hand
+  end
+
+  def total_scores(hands)
+    scores = {}
+    hands.each do |player, cards|
+      total = 0
+      cards.each do |card|
+        total += card.score
+      end
+      scores[player] = total
+    end
+    scores
+  end
+
+  def highest_score(scores)
+    winner_array = scores.max_by do |_k, v|
+      v
+    end
+    winner_array[0]
   end
 end

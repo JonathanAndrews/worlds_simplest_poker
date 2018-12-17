@@ -7,11 +7,14 @@ describe Dealer do
   hand_size = 2
   DECK_SIZE = 52
 
+  let(:card) do
+    double :Card, score: 1
+  end
   let(:deck) do
     double :Deck,
            reset: nil,
            size: DECK_SIZE,
-           remove_card: 1
+           remove_card: card
   end
 
   describe '#initialize' do

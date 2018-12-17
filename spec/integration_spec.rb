@@ -32,9 +32,8 @@ describe 'Integration Tests' do
         end
 
         it 'calls Kernel#rand' do
-          allow(Kernel).to receive(:rand).and_return(0)
-          expect(dealer.deal).to eq(player_1: [1, 2],
-                                    player_2: [3, 4])
+          expect(Kernel).to receive(:rand).exactly(4).times.and_return(0)
+          dealer.deal
         end
       end
 
