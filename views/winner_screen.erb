@@ -1,4 +1,11 @@
-<h1>And the winner is <%= @winner %></h1>
+<h1>And the winner is <%= @winner[0] %> with <%= @winner[1] %> points</h1>
+
+<% @hands.each do |player, cards| %>
+      <h3><%= player %></h3>
+      <% cards.each do |card| %>
+        <h6><%= card.value %> of <%= card.suit %></h6>
+      <% end %>
+    <% end %>
 
 <form action="/result" method="post">
     <input type="submit" value="Play another Hand?" />

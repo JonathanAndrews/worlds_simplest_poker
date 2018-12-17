@@ -41,7 +41,8 @@ describe 'Integration Tests' do
         it 'takes the hands and calculates the winner' do
           allow(Kernel).to receive(:rand).and_return(0)
           hands = dealer.deal
-          expect(dealer.calculate_winner(hands)).to eq(:player_2)
+          result = dealer.calculate_winner(hands)
+          expect(result[0]).to eq(:player_2)
         end
       end
 

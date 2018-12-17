@@ -52,7 +52,8 @@ describe Dealer do
       it 'takes the hands and calculates the winner' do
         allow(Kernel).to receive(:rand).and_return(0)
         hands = dealer.deal
-        expect(dealer.calculate_winner(hands)).to eq(:player_1)
+        result = dealer.calculate_winner(hands)
+        expect(result[0]).to eq(:player_1)
       end
     end
 

@@ -76,6 +76,6 @@ class Dealer
     winner_array = scores.max_by do |_k, v|
       v
     end
-    winner_array[0]
+    winner_array
   end
 end
