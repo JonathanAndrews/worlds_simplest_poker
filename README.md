@@ -9,7 +9,7 @@ I want to input the number of players and hand size.
 
 As a User,
 So I can see who won,
-I want to be able to see the hands.
+I want to be able to see each player's the hand.
 
 As a User,
 So I can see if it was draw,
@@ -32,6 +32,7 @@ Built with
 
 * Language      : Ruby
 * Testing       : RSpec (Unit and Feature)
+* CI            : Travis CI
 * Linter        : RuboCop
 * Code Coverage : SimpleCov 
 
