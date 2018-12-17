@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/JonathanAndrews/worlds_simplest_poker.svg?branch=master)](https://travis-ci.com/JonathanAndrews/worlds_simplest_poker)
+
 # World's most simple Poker
 
 ```
