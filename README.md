@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.com/JonathanAndrews/worlds_simplest_poker.svg?branch=master)](https://travis-ci.com/JonathanAndrews/worlds_simplest_poker)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/39f27f6011c338a5d9e4/maintainability)](https://codeclimate.com/github/JonathanAndrews/worlds_simplest_poker/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/39f27f6011c338a5d9e4/test_coverage)](https://codeclimate.com/github/JonathanAndrews/worlds_simplest_poker/test_coverage)
+
 # World's most simple Poker
 
 ```
