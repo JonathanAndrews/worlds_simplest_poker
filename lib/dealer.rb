@@ -2,15 +2,12 @@
 
 # The Dealer runs the game, allocating the cards and calculating the winner.
 class Dealer
-  DECK = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].freeze
   attr_reader :players, :hand_size, :deck
 
-  def initialize(players, hand_size)
+  def initialize(players, hand_size, deck = Deck.new)
     @players = players
     @hand_size = hand_size
+    @deck = deck
     reset_deck
   end
 
@@ -25,11 +22,11 @@ class Dealer
   end
 
   def enough_cards?
-    players * hand_size < deck.length
+    players * hand_size < deck.size
   end
 
   def reset_deck
-    @deck = DECK.dup
+    deck.reset
   end
 
   private
@@ -55,8 +52,8 @@ class Dealer
   def select_cards(quantity)
     hand = []
     quantity.times do
-      selected_index = Kernel.rand(deck.length)
-      hand << deck.delete_at(selected_index)
+      selected_index = Kernel.rand(deck.size)
+      hand << deck.remove_card(selected_index)
     end
     hand
   end
