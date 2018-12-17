@@ -19,4 +19,14 @@ describe Deck do
     expect(deck.size).to eq(DECK_SIZE - 1)
    end
   end
+
+  describe '#reset' do
+   it 'recompiles deck' do
+    deck = described_class.new
+    deck.remove_card(0)
+    expect(deck.size).to eq(DECK_SIZE - 1)
+    deck.reset
+    expect(deck.size).to eq(DECK_SIZE)
+   end
+  end
 end

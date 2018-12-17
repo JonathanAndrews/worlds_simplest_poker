@@ -19,4 +19,8 @@ class Deck
   def remove_card(index)
     cards.delete_at(index)
   end
+
+  def reset
+    @cards = CARDS.dup
+  end
 end
