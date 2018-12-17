@@ -15,4 +15,8 @@ class Deck
   def size
     cards.length
   end
+
+  def remove_card(index)
+    cards.delete_at(index)
+  end
 end

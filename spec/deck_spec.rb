@@ -11,4 +11,12 @@ describe Deck do
       expect(deck.size).to eq(DECK_SIZE)
     end
   end
+
+  describe '#remove_card' do
+   it 'removes card from deck at index' do
+    deck = described_class.new
+    expect(deck.remove_card(0)).to eq(1)
+    expect(deck.size).to eq(DECK_SIZE - 1)
+   end
+  end
 end
