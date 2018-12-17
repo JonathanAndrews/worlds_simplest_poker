@@ -9,6 +9,7 @@ describe Card do
       expect(card.suit).to eq('Spades')
       expect(card.value).to eq('Ace')
       expect(card.score).to eq(1)
+      expect(card.suit_score).to eq(3)
     end
   end
 end
