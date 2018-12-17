@@ -30,7 +30,7 @@ class SimplePoker < Sinatra::Base
   get '/result' do
     dealer = session[:dealer]
     @hands = dealer.deal
-    @winner = dealer.calculate_winner(@hands)
+    @winners = dealer.calculate_winner(@hands)
     erb :winner_screen
   end
 

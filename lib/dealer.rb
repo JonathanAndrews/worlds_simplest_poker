@@ -20,7 +20,7 @@ class Dealer
 
   def calculate_winner(hands)
     scores = total_scores(hands)
-    highest_score(scores)
+    highest_scores(scores)
   end
 
   def enough_cards?
@@ -72,10 +72,12 @@ class Dealer
     scores
   end
 
-  def highest_score(scores)
-    winner_array = scores.max_by do |_k, v|
+  def highest_scores(scores)
+    top_score = scores.max_by do |_k, v|
       v
     end
-    winner_array
+    winners_hash = scores.select { |key, value| value == top_score[1] }
+    winners_array = winners_hash.to_a
+    winners_array[0]
   end
 end

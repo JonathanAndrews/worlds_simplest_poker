@@ -1,4 +1,11 @@
-<h1>And the winner is <%= @winner[0] %> with <%= @winner[1] %> points</h1>
+<% if @winners.length == 2 %>
+  <h1>And the winner is <%= @winners[0] %> with <%= @winners[1] %> points</h1>
+<% else %>
+  <h1> It's a draw </h1>
+  <% @winners.each_slice(2) do |a, b| %>
+  <h1> <%= a %> Scored <%= b %> </h1>
+  <% end %>
+<% end %>
 
 <% @hands.each do |player, cards| %>
       <h3><%= player %></h3>
