@@ -2,12 +2,10 @@
 
 # The Dealer runs the game, allocating the cards and calculating the winner.
 class Dealer
-
-  DECK_SIZE = 52
   DECK = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
           1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].freeze
   attr_reader :players, :hand_size, :deck
 
   def initialize(players, hand_size)
@@ -27,7 +25,7 @@ class Dealer
   end
 
   def enough_cards?
-    players * hand_size < DECK_SIZE
+    players * hand_size < deck.length
   end
 
   def reset_deck

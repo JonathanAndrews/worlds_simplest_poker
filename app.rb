@@ -18,13 +18,13 @@ class SimplePoker < Sinatra::Base
     players = params['no_of_players'].to_i
     hand_size = params['hand_size'].to_i
     dealer = Dealer.new(players, hand_size)
-    unless dealer.enough_cards?
-      flash[:notice] = "Not enough dards in the deck..."
-      redirect '/'
-    else
+    if dealer.enough_cards?
       session[:dealer] = dealer
       redirect '/result'
-    end 
+    else
+      flash[:notice] = 'Not enough dards in the deck...'
+      redirect '/'
+    end
   end
 
   get '/result' do
