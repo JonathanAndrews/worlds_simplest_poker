@@ -22,7 +22,7 @@ class SimplePoker < Sinatra::Base
       session[:dealer] = dealer
       redirect '/result'
     else
-      flash[:notice] = 'Not enough dards in the deck...'
+      flash[:notice] = 'Not enough cards in the deck...'
       redirect '/'
     end
   end

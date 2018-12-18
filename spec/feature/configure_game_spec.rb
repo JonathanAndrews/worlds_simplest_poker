@@ -37,6 +37,6 @@ feature 'Configure Game screen' do
     fill_in :no_of_players, with: 52
     fill_in :hand_size, with: 2
     click_button('Play')
-    expect(page).to have_content('Not enough dards in the deck...')
+    expect(page).to have_content('Not enough cards in the deck...')
   end
 end
