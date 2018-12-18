@@ -1,5 +1,7 @@
 <% if @winners.length == 2 %>
-  <h1>And the winner is <%= @winners[0].to_s.split('_').map(&:capitalize).join(' ') %> with <%= @winners[1] %> points</h1>
+  <h1>And the winner is
+  <%= @winners[0].to_s.split('_').map(&:capitalize).join(' ') %>
+  with <%= @winners[1] %> points</h1>
 <% else %>
   <h1> It's a draw </h1>
   <% @winners.each_slice(2) do |a, b| %>
