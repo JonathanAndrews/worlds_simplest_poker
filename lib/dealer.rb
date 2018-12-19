@@ -76,7 +76,7 @@ class Dealer
     top_score = scores.max_by do |_k, v|
       v
     end
-    winners_hash = scores.select { |key, value| value == top_score[1] }
+    winners_hash = scores.select { |_key, value| value == top_score[1] }
     winners_array = winners_hash.to_a
     winners_array[0]
   end

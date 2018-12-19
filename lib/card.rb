@@ -11,15 +11,16 @@ class Card
   end
 
   private
+
   def assign_suit_score
     case suit
-    when "Hearts"
+    when 'Hearts'
       4
-    when "Spades" 
+    when 'Spades'
       3
-    when "Diamonds"
+    when 'Diamonds'
       2
-    when "Clubs"
+    when 'Clubs'
       1
     end
   end

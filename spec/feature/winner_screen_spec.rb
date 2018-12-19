@@ -27,12 +27,12 @@ feature 'Winner screen' do
     expect(page).to have_content("Welcome the World's Simplest Poker Game")
   end
 
-  scenario "shows the hands" do
+  scenario 'shows the hands' do
     visit '/'
     fill_in :no_of_players, with: 2
     fill_in :hand_size, with: 2
     click_button('Play')
-    expect(page).to have_content("player_1")
-    expect(page).to have_content("player_2")
+    expect(page).to have_content('player_1')
+    expect(page).to have_content('player_2')
   end
 end
