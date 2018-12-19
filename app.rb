@@ -7,7 +7,6 @@ require_relative './lib/dealer'
 # These are the routes for simple poker application
 class SimplePoker < Sinatra::Base
   enable :sessions
-  set :session_secret, 'Ssssshhh! secret'
   register Sinatra::Flash
 
   get '/' do
