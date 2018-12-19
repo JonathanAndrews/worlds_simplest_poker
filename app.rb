@@ -20,6 +20,7 @@ class SimplePoker < Sinatra::Base
     dealer = Dealer.new(players, hand_size)
     if dealer.enough_cards?
       session[:dealer] = dealer
+      session[:hands] = dealer.deal
       redirect '/result'
     else
       flash[:notice] = 'Not enough dards in the deck...'
@@ -29,7 +30,8 @@ class SimplePoker < Sinatra::Base
 
   get '/result' do
     dealer = session[:dealer]
-    @hands = dealer.deal
+    dealer.reset_deck
+    @hands = session[:hands]
     @winners = dealer.calculate_winner(@hands)
     erb :winner_screen
   end
@@ -37,6 +39,7 @@ class SimplePoker < Sinatra::Base
   post '/result' do
     dealer = session[:dealer]
     dealer.reset_deck
+    session[:hands] = dealer.deal
     redirect '/result'
   end
 end
